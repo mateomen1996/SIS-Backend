@@ -16,7 +16,7 @@ class usuarioControlador extends Controller
         
         //Validacion de los datos
         $validate = \Validator::make($params_array,[
-            'correo'=>'required',
+            //'correo'=>'required',
             'contrasena'=>'required']);
         if($validate -> fails()){
             return response() -> json($validate -> errors(),400);
@@ -37,7 +37,7 @@ class usuarioControlador extends Controller
         
         //Validacion de los datos
         $validate = \Validator::make($params_array,[
-            'correo'=>'required',
+            //'correo'=>'required',
             'contrasena'=>'required']);
         if($validate -> fails()){
             return response() -> json($validate -> errors(),400);

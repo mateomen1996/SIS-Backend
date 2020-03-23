@@ -10,7 +10,7 @@ class usuarioModelo extends Model
     public $timestamps = false;
 
     public function crear($params){
-        $this ->correo=$params->correo;
+        $this ->correo=$params->email;
         $this ->contrasena=$params->contrasena;
         $this ->save();
         return array(
@@ -20,7 +20,7 @@ class usuarioModelo extends Model
         );
     }
     public function login($params){
-        $correo=$params->correo;
+        $correo=$params->email;
         $contrasena=$params->contrasena;
 
         $cantidad=usuarioModelo::where('correo','=',$correo)->where('contrasena','=',$contrasena)->count();

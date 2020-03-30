@@ -1,96 +1,78 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\ResponseController as ResponseController;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\User;
-use Validator;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\SignupActivate;
 
-class AuthController extends ResponseController
+class AuthController extends Controller
 {
-    //create user
     public function signup(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required',
-            'confirm_password' => 'required|same:password'
+        $request->validate([
+            'name'      => 'required|string',
+            'email'     => 'required|string|email|unique:users',
+            'password'  => 'required|string|confirmed',
         ]);
-
-        if($validator->fails()){
-            return $this->sendError($validator->errors());       
-        }
-
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        if($user){
-            $success['token'] =  $user->createToken('token')->accessToken;
-            $success['message'] = "Registration successfull..";
-            return $this->sendResponse($success);
-        }
-        else{
-            $error = "Sorry! Registration is not successfull.";
-            return $this->sendError($error, 401); 
-        }
+        $user = new User([
+            'name'              => $request->name,
+            'email'             => $request->email,
+            'password'          => bcrypt($request->password),
+            'activation_token'  => str_random(60),
+        ]);
+        $user->save();
+        $user->notify(new SignupActivate($user));
         
+        return response()->json(['message' => 'Usuario creado existosamente!'], 201);
     }
-    
-    //login
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required'
+        $request->validate([
+            'email'       => 'required|string|email',
+            'password'    => 'required|string',
+            'remember_me' => 'boolean',
         ]);
-
-        if($validator->fails()){
-            return $this->sendError($validator->errors());       
-        }
-
         $credentials = request(['email', 'password']);
-        if(!Auth::attempt($credentials)){
-            $error = "Unauthorized";
-            return $this->sendError($error, 401);
+        $credentials['active'] = 1;
+        $credentials['deleted_at'] = null;
+        
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['message' => 'No Autorizado'], 401);
         }
         $user = $request->user();
-        $success['token'] =  $user->createToken('token')->accessToken;
-        return $this->sendResponse($success);
+        $tokenResult = $user->createToken('Token Acceso Personal');
+        $token = $tokenResult->token;
+        if ($request->remember_me) {
+            $token->expires_at = Carbon::now()->addWeeks(1);
+        }
+        $token->save();
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type'   => 'Bearer',
+            'expires_at'   => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
+        ]);
     }
-
-    //logout
     public function logout(Request $request)
     {
-        
-        $isUser = $request->user()->token()->revoke();
-        if($isUser){
-            $success['message'] = "Successfully logged out.";
-            return $this->sendResponse($success);
-        }
-        else{
-            $error = "Something went wrong.";
-            return $this->sendResponse($error);
-        }
-            
-        
+        $request->user()->token()->revoke();
+        return response()->json(['message' => 
+            'Successfully logged out']);
     }
 
-    //getuser
-    public function getUser(Request $request)
+    public function user(Request $request)
     {
-        //$id = $request->user()->id;
-        $user = $request->user();
-        if($user){
-            return $this->sendResponse($user);
+        return response()->json($request->user());
+    }
+    public function signupActivate($token)
+    {
+        $user = User::where('activation_token', $token)->first();
+        if (!$user) {
+            return response()->json(['message' => 'El token de activación es inválido'], 404);
         }
-        else{
-            $error = "user not found";
-            return $this->sendResponse($error);
-        }
+        $user->active = true;
+        $user->activation_token = '';
+        $user->save();
+        return $user;
     }
 }

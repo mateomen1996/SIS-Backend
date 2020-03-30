@@ -3,14 +3,12 @@
   array (
     'name' => 'Laravel',
     'env' => 'local',
-    'debug' => 'z',
-    'url' => 'http://localhost',
-    'asset_url' => NULL,
+    'debug' => true,
+    'url' => 'http://181.188.163.198',
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'faker_locale' => 'en_US',
-    'key' => 'base64:6PH/zbH73ILhpl1tZ5WVWmCJqMBPqEo3npkaGZK718M=',
+    'key' => 'base64:2zDvbagXudXysQAqp89F7o55YxMoJGb6az3Fq4wI56c=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -44,7 +42,6 @@
     'aliases' => 
     array (
       'App' => 'Illuminate\\Support\\Facades\\App',
-      'Arr' => 'Illuminate\\Support\\Arr',
       'Artisan' => 'Illuminate\\Support\\Facades\\Artisan',
       'Auth' => 'Illuminate\\Support\\Facades\\Auth',
       'Blade' => 'Illuminate\\Support\\Facades\\Blade',
@@ -74,7 +71,6 @@
       'Schema' => 'Illuminate\\Support\\Facades\\Schema',
       'Session' => 'Illuminate\\Support\\Facades\\Session',
       'Storage' => 'Illuminate\\Support\\Facades\\Storage',
-      'Str' => 'Illuminate\\Support\\Str',
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
@@ -98,7 +94,6 @@
       array (
         'driver' => 'passport',
         'provider' => 'users',
-        'hash' => false,
       ),
     ),
     'providers' => 
@@ -173,7 +168,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -200,15 +195,7 @@
       'redis' => 
       array (
         'driver' => 'redis',
-        'connection' => 'cache',
-      ),
-      'dynamodb' => 
-      array (
-        'driver' => 'dynamodb',
-        'key' => '',
-        'secret' => '',
-        'region' => 'us-east-1',
-        'table' => 'cache',
+        'connection' => 'default',
       ),
     ),
     'prefix' => 'laravel_cache',
@@ -248,7 +235,6 @@
         'driver' => 'sqlite',
         'database' => 'taller_sis_backend',
         'prefix' => '',
-        'foreign_key_constraints' => true,
       ),
       'mysql' => 
       array (
@@ -262,12 +248,8 @@
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
         'prefix' => '',
-        'prefix_indexes' => true,
         'strict' => true,
         'engine' => NULL,
-        'options' => 
-        array (
-        ),
       ),
       'pgsql' => 
       array (
@@ -279,7 +261,6 @@
         'password' => 'sistemas2020',
         'charset' => 'utf8',
         'prefix' => '',
-        'prefix_indexes' => true,
         'schema' => 'public',
         'sslmode' => 'prefer',
       ),
@@ -293,30 +274,18 @@
         'password' => 'sistemas2020',
         'charset' => 'utf8',
         'prefix' => '',
-        'prefix_indexes' => true,
       ),
     ),
     'migrations' => 'migrations',
     'redis' => 
     array (
       'client' => 'predis',
-      'options' => 
-      array (
-        'cluster' => 'predis',
-      ),
       'default' => 
       array (
         'host' => '127.0.0.1',
         'password' => NULL,
         'port' => '6379',
         'database' => 0,
-      ),
-      'cache' => 
-      array (
-        'host' => '127.0.0.1',
-        'password' => NULL,
-        'port' => '6379',
-        'database' => 1,
       ),
     ),
   ),
@@ -329,20 +298,20 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\app',
+        'root' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'root' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\app/public',
+        'url' => 'http://181.188.163.198/storage',
         'visibility' => 'public',
       ),
       's3' => 
       array (
         'driver' => 's3',
-        'key' => '',
-        'secret' => '',
+        'key' => NULL,
+        'secret' => NULL,
         'region' => NULL,
         'bucket' => NULL,
         'url' => NULL,
@@ -352,16 +321,6 @@
   'hashing' => 
   array (
     'driver' => 'bcrypt',
-    'bcrypt' => 
-    array (
-      'rounds' => 10,
-    ),
-    'argon' => 
-    array (
-      'memory' => 1024,
-      'threads' => 2,
-      'time' => 2,
-    ),
   ),
   'logging' => 
   array (
@@ -373,22 +332,21 @@
         'driver' => 'stack',
         'channels' => 
         array (
-          0 => 'daily',
+          0 => 'single',
         ),
-        'ignore_exceptions' => false,
       ),
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\logs/laravel.log',
         'level' => 'debug',
-        'days' => 14,
+        'days' => 7,
       ),
       'slack' => 
       array (
@@ -397,27 +355,6 @@
         'username' => 'Laravel Log',
         'emoji' => ':boom:',
         'level' => 'critical',
-      ),
-      'papertrail' => 
-      array (
-        'driver' => 'monolog',
-        'level' => 'debug',
-        'handler' => 'Monolog\\Handler\\SyslogUdpHandler',
-        'handler_with' => 
-        array (
-          'host' => NULL,
-          'port' => NULL,
-        ),
-      ),
-      'stderr' => 
-      array (
-        'driver' => 'monolog',
-        'handler' => 'Monolog\\Handler\\StreamHandler',
-        'formatter' => NULL,
-        'with' => 
-        array (
-          'stream' => 'php://stderr',
-        ),
       ),
       'syslog' => 
       array (
@@ -434,26 +371,16 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
+    'host' => 'smtp.googlemail.com',
+    'port' => 587,
     'from' => 
     array (
-      'address' => 'hello@example.com',
-      'name' => 'Example',
+      'address' => 'g3tallerdesistemas@gmail.com',
+      'name' => 'Taller De Sistemas Grupo 3',
     ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => 'C:\\xampp\\htdocs\\SIS-Backend\\resources\\views/vendor/mail',
-      ),
-    ),
-    'log_channel' => NULL,
+    'encryption' => 'tls',
+    'username' => 'g3tallerdesistemas@gmail.com',
+    'password' => 'rgszkasggfxjixjs',
   ),
   'queue' => 
   array (
@@ -477,13 +404,12 @@
         'host' => 'localhost',
         'queue' => 'default',
         'retry_after' => 90,
-        'block_for' => 0,
       ),
       'sqs' => 
       array (
         'driver' => 'sqs',
-        'key' => '',
-        'secret' => '',
+        'key' => 'your-public-key',
+        'secret' => 'your-secret-key',
         'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
         'queue' => 'your-queue-name',
         'region' => 'us-east-1',
@@ -509,16 +435,11 @@
     array (
       'domain' => NULL,
       'secret' => NULL,
-      'endpoint' => 'api.mailgun.net',
-    ),
-    'postmark' => 
-    array (
-      'token' => NULL,
     ),
     'ses' => 
     array (
-      'key' => '',
-      'secret' => '',
+      'key' => NULL,
+      'secret' => NULL,
       'region' => 'us-east-1',
     ),
     'sparkpost' => 
@@ -530,11 +451,6 @@
       'model' => 'App\\User',
       'key' => NULL,
       'secret' => NULL,
-      'webhook' => 
-      array (
-        'secret' => NULL,
-        'tolerance' => 300,
-      ),
     ),
   ),
   'session' => 
@@ -543,7 +459,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -563,18 +479,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\SIS-Backend\\resources\\views',
+      0 => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\SIS-Backend\\storage\\framework\\views',
-  ),
-  'debug-server' => 
-  array (
-    'host' => 'tcp://127.0.0.1:9912',
-  ),
-  'passport' => 
-  array (
-    'private_key' => NULL,
-    'public_key' => NULL,
+    'compiled' => 'C:\\Users\\mfsaavedra\\Desktop\\SIS-BACKEND\\storage\\framework\\views',
   ),
   'trustedproxy' => 
   array (

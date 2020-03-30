@@ -14,12 +14,15 @@ class AuthController extends Controller
             'name'      => 'required|string',
             'email'     => 'required|string|email|unique:users',
             'password'  => 'required|string|confirmed',
+            'id_rol'    => 'Integer|in:1,2,3',
         ]);
         $user = new User([
             'name'              => $request->name,
             'email'             => $request->email,
             'password'          => bcrypt($request->password),
             'activation_token'  => str_random(60),
+            'id_rol'  => $request->id_rol,
+            'id_user'  => $request->id_user,
         ]);
         $user->save();
         $user->notify(new SignupActivate($user));

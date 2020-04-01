@@ -10,16 +10,18 @@ class AuthController extends Controller
 {
     public function signup(Request $request)
     {
+        $id_user=0;
         $permiso="";
-        if($request->user()->id_rol==1)
+        if($request->user()->id_rol==1){
             $permiso="Integer|in:1,2,3";
-        else
-            if($request->user()->id_rol==2)
+        }else{
+            if($request->user()->id_rol==2){
                 $permiso="Integer|in:4,5";
-            else
+            }else{
                 return response()->json(['message' => 'NO AUTORIZADO'], 401);
-        
-
+            }
+        }
+        echo "numero :".$id_user;
         $request->validate([
             'name'      => 'required|string',
             'email'     => 'required|string|email|unique:users',
@@ -32,7 +34,7 @@ class AuthController extends Controller
             'password'          => bcrypt($request->password),
             'activation_token'  => str_random(60),
             'id_rol'  => $request->id_rol,
-            'id_user'  => $request->id_user,
+            'id_user'  => $request->user()->id,
         ]);
         $user->save();
         $user->notify(new SignupActivate($user));
@@ -87,9 +89,5 @@ class AuthController extends Controller
         $user->activation_token = '';
         $user->save();
         return $user;
-    }
-    public function getUser()
-    {
-        return response()->json(user::all());
     }
 }

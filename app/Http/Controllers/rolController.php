@@ -8,7 +8,7 @@ use App\Rol;
 class rolController extends Controller
 {
     //
-    public function getRol()
+    public function rol()
     {
         return response()->json(rol::all());
     }

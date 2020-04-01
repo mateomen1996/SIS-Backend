@@ -11,4 +11,12 @@ class userController extends Controller
     {
         return response()->json(user::all());
     }
+    public function userCreator(Request $request)
+    {
+        return response()->json(
+            
+            User::where('id_user', '=', $request->user()->id)->get()
+        );
+
+    }
 }

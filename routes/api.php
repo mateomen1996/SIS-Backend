@@ -13,6 +13,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 //CON AUTENTIFICACION
 Route::group(['middleware' => 'auth:api'], function () {
+Route::get('userCreator', 'userController@userCreator');
 
     
 });
@@ -20,6 +21,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 //SIN AUTENTIFICACION
 //User
 Route::get('user', 'userController@user');
-
 //Rol
 Route::get('rol', 'rolController@rol');

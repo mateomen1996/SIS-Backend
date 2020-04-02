@@ -1,5 +1,8 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 //Auth
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', 'AuthController@login');
@@ -13,7 +16,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 //CON AUTENTIFICACION
 Route::group(['middleware' => 'auth:api'], function () {
-Route::get('userCreator', 'userController@userCreator');
+Route::post('userCreator', 'userController@userCreator');
 Route::get('user/{id}', 'userController@getUser');
 Route::put('user/{id}', 'userController@update');
 

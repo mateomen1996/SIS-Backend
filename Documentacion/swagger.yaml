@@ -3,335 +3,271 @@ info:
   description: "Este es la Documentacion del ApiRest para el Sistema de Control de Cirugias"
   version: "1.0.0"
   title: "Sistema de Control de Cirugias"
-  termsOfService: "http://swagger.io/terms/"
   contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://181.188.163.198:8000/api"
-host: "Cirugias"
-basePath: "/v1"
-tags:
-- name: "Usuarios"
-  description: "Login y Creacion de token"
-  externalDocs:
-    description: ""
-    url: "http://181.188.163.198:8000/api/"
-- name: "Personas"
-  description: "AVM de los Pacientes"
-  externalDocs:
-    description: ""
-    url: "http://181.188.163.198:8000/api/"
-schemes:
-- "https"
-- "http"
+    email: "g3tallerdesistemas@gmail.com"
+# schemes:
+# - "http"
 paths:
   /api/auth/login:
     post:
       tags:
-      - "Usuarios"
-      summary: "Ingreso al sistema"
-      description: ""
-      operationId: "loginUser"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "correo"
-        in: "query"
-        description: "Correo electronico"
-        required: true
-        type: "string"
-      - name: "password"
-        in: "query"
-        description: "La Contraseña del usuario"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalido correo o Contraseña incorrecta"
-  /api/auth/logout:
-   get:
-      tags:
-      - "Usuarios"
-      summary: "Cerrado de Session"
-      description: ""
-      operationId: "logoutUser"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters: []
-      responses:
-        default:
-          description: "Operacion exitosa"
-  /api/auth/signup:
-    post:
-      tags:
-      - "Usuarios"
-      summary: "Creacion de Usuarios"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
+      - "Autentificacion"
+      summary: "Ingresar al sistema"
+      description: "Ingresar al sistema"
       parameters:
       - in: "body"
         name: "body"
-        description: "El Usuario cierra la sesion"
+        description: "Iniciar Sesion"
         required: true
         schema:
-          $ref: "#/definitions/DatosUsuario"
+          type: "object"
+          properties:
+            email:
+              type: "string"
+              format: "email"
+            password:
+              type: "string"
+              format: "varchar"
       responses:
-        201:
-          description: "Usuario Creado Exitosamente"
-        401:
-          description: "No Autorizado"
-  /pet/auth/signup/activate/{token}:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              access_token:
+                type: "string"
+              token_type:
+                type: "string"
+              expires_at:
+                type: "string"
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/auth/signup/activate/token:
     get:
       tags:
-      - "Usuarios"
-      summary: "Activacion del la Cuenta Correo electronico"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "token"
-        in: "path"
-        description: "Token"
-        required: true
-        type: "string"
+      - "Autentificacion"
+      summary: "Activa el usuario"
+      description: "Activa el usuario"
       responses:
-        201:
-          description: "Confirmacion de correo Exitoso"
-        404:
-          description: "El token de Activacion es invalido"
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/auth/sigup:
+    post:
+      tags:
+      - "Autentificacion"
+      summary: "Ingresar al sistema"
+      description: "Ingresar al sistema"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Iniciar Sesion"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+              format: "varchar"
+            email:
+              type: "string"
+              format: "varchar"
+            password:
+              type: "string"
+              format: "varchar"
+            password_confirmation:
+              type: "string"
+              format: "varchar"
+            id_rol:
+              type: "number"
+              format: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/auth/logout:
+    get:
+      tags:
+      - "Autentificacion"
+      summary: "Salir del sistema"
+      description: "Salir del sistema"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
   /api/auth/user:
     get:
       tags:
-      - "Usuarios"
-      summary: "Obtener datos del Usuario por token"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "token"
-        in: "path"
-        description: "Token"
-        required: true
-        type: "string"
+      - "Autentificacion"
+      summary: "informacion de usuario"
+      description: "informacion de usuario"
       responses:
         200:
-          description: "successful operation"
+          description: Succses
           schema:
-            $ref: "#/definitions/UsuarioRegistro"
-        404:
-          description: "El token inexistente"
-  /api/rol:
-    get:
-      tags:
-      - "Usuarios"
-      summary: "Muestra lo diferentes roles de Usuarios"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Solicita los roles existentes"
-        required: true
-        schema:
-          $ref: "#/definitions/Rol"
-      responses:
-        201:
-          description: "Usuario Creado Exitosamente"
-        401:
-          description: "No Autorizado"
-  /api/user:
-    get:
-      tags:
-      - "Usuarios"
-      summary: "Muestra todos los usuarios que creaste"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Solicita todos los usuarios que el creo"
-        required: true
-        schema:
-          $ref: "#/definitions/UsuarioRegistro"
-      responses:
-        201:
-          description: "Proceso Correcto"
-        401:
-          description: "No Autorizado"
-  /api/user1/{id}:
-    put:
-      tags:
-      - "Usuarios"
-      summary: "Actualizacion del usuario"
-      description: ""
-      operationId: "updateUser"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "name that need to be updated"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Updated user object"
-        required: true
-        schema:
-          $ref: "#/definitions/UsuarioUP"
-      responses:
-        201:
-          description: "Usuario Actulizado Correctamente"
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              name:
+                type: "string"
+              email:
+                type: "string"
+              active:
+                type: "number"
+              created_at:
+                type: "string"
+              updated_at:
+                type: "string"
+              deleted_at:
+                type: "string"
+              id_rol:
+                type: "number"
+              id_user:
+                type: "number"
         400:
-          description: "no autorizado"
-        404:
-          description: "Usuario no encontrado"
-  /api/user/{id}:
-    get:
-      tags:
-      - "Usuarios"
-      summary: "Muestra todos los usuarios en el login"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "id del usuario a mostrar datos"
-        required: true
-        type: "string"
-      - name: "token"
-        in: "path"
-        description: "Token"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "Operacion exitosa"
-          schema:
-            $ref: "#/definitions/UsuarioRegistro"
-        404:
-          description: "Usuario inexistente"
+          description: Page Not Found
   /api/userCreator:
     get:
       tags:
       - "Usuarios"
-      summary: "Muestra informacion detallada de un usuario"
-      description: ""
-      operationId: ""
-      consumes:
-      - "application/json"
-      - "application/xml"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "token"
-        in: "path"
-        description: "Token"
-        required: true
-        type: "string"
+      summary: "Muestra todos los usuarios creados por el usuario"
+      description: "Muestra todos los usuarios creados por el usuario"
       responses:
         200:
-          description: "operacion exitosa"
+          description: Succses
           schema:
-            $ref: "#/definitions/UsuarioRegistro"
-        404:
-          description: "Usuario inexistente"
-definitions:
-  Rol:
-    type: "object"
-    properties:
-      rol:
-        type: "integer"
-        format: "int64"
-  DatosUsuario:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-        format: "varchar"
-      email:
-        type: "string"
-        format: "varchar"
-      passwors:
-        type: "string"
-        format: "varchar"
-      confirm_password:
-        type: "string"
-        format: "varchar"
-    xml:
-      name: "Usuario"
-  UsuarioUP:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-        format: "varchar"
-    xml:
-      name: "UsuarioUP"
-  UsuarioRegistro:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-        format: "varchar"
-      email:
-        type: "string"
-        format: "varchar"
-      passwors:
-        type: "string"
-        format: "varchar"
-      activation_token:
-        type: "string"
-        format: "varchar"
-      id_rol:
-        type: "integer"
-        format: "int64"
-      id_user:
-        type: "integer"
-        format: "int64"
-    xml:
-      name: "Usuario"
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              name:
+                type: "string"
+              email:
+                type: "string"
+              active:
+                type: "number"
+              created_at:
+                type: "string"
+              updated_at:
+                type: "string"
+              deleted_at:
+                type: "string"
+              id_rol:
+                type: "number"
+              id_user:
+                type: "number"
+        400:
+          description: Page Not Found
+  /api/user/id:
+    get:
+      tags:
+      - "Usuarios"
+      summary: "Muestra el detalle del usuario"
+      description: "Muestra el detalle del usuario"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              name:
+                type: "string"
+              email:
+                type: "string"
+              active:
+                type: "number"
+              created_at:
+                type: "string"
+              updated_at:
+                type: "string"
+              deleted_at:
+                type: "string"
+              id_rol:
+                type: "number"
+              id_user:
+                type: "number"
+        400:
+          description: Page Not Found
+  /(Update)/api/user/id:
+    put:
+      tags:
+      - "Usuarios"
+      summary: "Modificar un usuario"
+      description: "Ingresar al sistema"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Iniciar Sesion"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+              format: "varchar"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/cirugia:
+    post:
+      tags:
+      - "Cirugia"
+      summary: "Crea una cirugia"
+      description: "Crea una cirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Iniciar Sesion"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+              format: "varchar"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /mateomen1996/Proyecto/1.0.0
+schemes:
+ - http

@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('userCreator', 'userController@userCreator');
     Route::get('user/{id}', 'userController@getUser');
     Route::put('user/{id}', 'userController@update');
+
+    //Cirugia
     Route::post('cirugia', 'cirugiaController@crear');
     //
 });

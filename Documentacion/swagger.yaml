@@ -17,7 +17,6 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Iniciar Sesion"
         required: true
         schema:
           type: "object"
@@ -69,7 +68,6 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Iniciar Sesion"
         required: true
         schema:
           type: "object"
@@ -220,7 +218,6 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Iniciar Sesion"
         required: true
         schema:
           type: "object"
@@ -247,14 +244,18 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Iniciar Sesion"
         required: true
         schema:
           type: "object"
           properties:
-            name:
+            id_paciente:
+              type: "number"
+            id_sala:
+              type: "number"
+            fechaIngreso:
               type: "string"
-              format: "varchar"
+            fechaSalida:
+              type: "string"
       responses:
         200:
           description: Succses
@@ -265,9 +266,33 @@ paths:
                 type: "string"
         400:
           description: Page Not Found
+  /api/salas:
+    get:
+      tags:
+      - "Salas"
+      summary: "Muestra todas las salas"
+      description: "Muestra todas las salas"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+        400:
+          description: Page Not Found
   
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 basePath: /mateomen1996/Proyecto/1.0.0
+# schemes:
+#  - http
+# Added by API Auto Mocking Plugin
 schemes:
+ - https
  - http

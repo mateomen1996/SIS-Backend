@@ -24,7 +24,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Cirugia
     Route::post('cirugia', 'cirugiaController@crear');
-    //
+    
+    //Salas
+    Route::get('salas', 'salaController@salas');
 });
 
 //SIN AUTENTIFICACION

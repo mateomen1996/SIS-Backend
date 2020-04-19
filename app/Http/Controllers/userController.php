@@ -8,45 +8,54 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
-    public function user()
-    {
-        return response()->json(user::all());
-    }
     public function userCreator(Request $request)
     {
-        return response()->json(
-            
-            User::where('id_user', '=', $request->user()->id)->get()
-        );
+        $user = new User;
+        $user = $user->userCreator($request->user()->id);
+        return response()->json($user);
 
     }
     public function getUser(Request $request,$id)
     {
+        $user = new User;
+        $user = $user->getUser($id,$request->user()->id);
+        return response()->json($user);
 
-        return response()->json(
-            User::where('id', '=', $id)
-            ->where('id_user', '=', $request->user()->id)
-            ->get()
-        );
 
     }
     public function update(Request $request,$id)
     {
-        $request->validate([
+
+        $rules = [
             'name'      => 'required|string'
-        ]);
+        ];
+        $messages = [
+            'name.required' => 'nombre requerido.',
+            'name.string' =>'nombre invalido.',
+
+        ];
+        
+        $validator = \Validator::make($request->all(),$rules,$messages);
+ 
+        if($validator->fails()){
+            return response()-> json([
+                'message' => $validator->errors()->all()
+                ],200);
+        }
+
 
         $pertenencia= User::where('id', '=', $id)
         ->where('id_user', '=', $request->user()->id)
         ->count();
 
         if($pertenencia==0){
-            return response()->json(['message' => 'NO AUTORIZADO'], 401);
+            return response()->json(['message' => 'No cuenta con los permisos suficientes'], 201);
         }
     
         $user = User::find($id);
 
         $user->name = $request->name;
+        
 
         $user->save();
 

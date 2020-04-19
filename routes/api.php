@@ -5,8 +5,9 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 //Auth
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', 'AuthController@login');
     Route::get('signup/activate/{token}', 'AuthController@signupActivate');
+    Route::post('login', 'AuthController@login');
+
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('signup', 'AuthController@signup');
         Route::get('logout', 'AuthController@logout');
@@ -16,15 +17,14 @@ Route::group(['prefix' => 'auth'], function () {
 
 //CON AUTENTIFICACION
 Route::group(['middleware' => 'auth:api'], function () {
-Route::post('userCreator', 'userController@userCreator');
-Route::get('user/{id}', 'userController@getUser');
-Route::put('user/{id}', 'userController@update');
-
-
+    //USER
+    Route::get('userCreator', 'userController@userCreator');
+    Route::get('user/{id}', 'userController@getUser');
+    Route::put('user/{id}', 'userController@update');
+    Route::post('cirugia', 'cirugiaController@crear');
+    //
 });
 
 //SIN AUTENTIFICACION
-//User
-Route::get('user', 'userController@user');
 //Rol
 Route::get('rol', 'rolController@rol');

@@ -10,6 +10,8 @@ class rolController extends Controller
     //
     public function rol()
     {
-        return response()->json(rol::all());
+        $roles= new Rol;
+        $roles=$roles->getRoles();
+        return response()->json($roles);
     }
 }

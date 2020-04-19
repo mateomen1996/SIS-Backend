@@ -8,4 +8,7 @@ class Rol extends Model
 {
     protected $table="rol";
     //
+    public function getRoles(){
+        return Rol::all();
+    }
 }

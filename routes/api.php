@@ -18,7 +18,7 @@ Route::group(['prefix' => 'auth'], function () {
 //CON AUTENTIFICACION
 Route::group(['middleware' => 'auth:api'], function () {
     //USER
-    Route::get('userCreator', 'userController@userCreator');
+    Route::post('userCreator', 'userController@userCreator');
     Route::get('user/{id}', 'userController@getUser');
     Route::put('user/{id}', 'userController@update');
 

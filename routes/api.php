@@ -24,7 +24,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Cirugia
     Route::post('cirugia', 'cirugiaController@crear');
-    
+    Route::post('cirugia/getCirugias', 'cirugiaController@getCirugias');
+    Route::post('cirugia/{id}', 'cirugiaController@getCirugia');
+    Route::put('cirugia/{id}', 'cirugiaController@update');
+
     //Salas
     Route::get('salas', 'salaController@salas');
 });

@@ -146,7 +146,7 @@ paths:
         400:
           description: Page Not Found
   /api/userCreator:
-    get:
+    post:
       tags:
       - "Usuarios"
       summary: "Muestra todos los usuarios creados por el usuario"
@@ -263,6 +263,85 @@ paths:
             type: "object"
             properties:
               message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /(Update)/api/cirugia/id:
+    put:
+      tags:
+      - "Cirugia"
+      summary: "Modifica una cirugia"
+      description: "Modifica una cirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_paciente:
+              type: "number"
+            id_sala:
+              type: "number"
+            fechaIngreso:
+              type: "string"
+            fechaSalida:
+              type: "string"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/cirugia/getCirugia:
+    post:
+      tags:
+      - "Cirugia"
+      summary: "Muestra todas las cirugia"
+      description: "Muestra todas las cirugias"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              id_paciente:
+                type: "number"
+              id_sala:
+                type: "number"
+              fechaIngreso:
+                type: "string"
+              fechaSalida:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/cirugia/id:
+    post:
+      tags:
+      - "Cirugia"
+      summary: "Muestra detalle de cirugia"
+      description: "Muestra detalle de cirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              id_paciente:
+                type: "number"
+              id_sala:
+                type: "number"
+              fechaIngreso:
+                type: "string"
+              fechaSalida:
                 type: "string"
         400:
           description: Page Not Found

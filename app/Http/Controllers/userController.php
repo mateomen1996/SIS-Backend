@@ -51,12 +51,8 @@ class userController extends Controller
         if($pertenencia==0){
             return response()->json(['message' => 'No cuenta con los permisos suficientes'], 201);
         }
-    
         $user = User::find($id);
-
         $user->name = $request->name;
-        
-
         $user->save();
 
         return response()->json(['message' => 'Usuario Actuilizado existosamente!'], 201);

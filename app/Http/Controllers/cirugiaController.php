@@ -32,7 +32,31 @@ class cirugiaController extends Controller
         ]);
         
         $cirugia->save();
+
         return response()->json(['message' => 'Registro de cirugia exitoso'], 200);
+
+    }
+    public function getCirugias(Request $request)
+    {
+        $cirugia = new Cirugia;
+        $cirugia = $cirugia->getCirugias($request->user()->id);
+        return $cirugia;
+    }
+    public function getCirugia(Request $request,$id)
+    {
+        $cirugia = new Cirugia;
+        $cirugia = $cirugia->getCirugia($id,$request->user()->id);
+        return response()->json($cirugia);
+    }
+    public function update(Request $request,$id)
+    {
+        $cirugia = new Cirugia;
+        $cirugia = $cirugia->actualizar($request,$id);
+        if($cirugia)
+            return response()->json(['message' => 'Actualizacion de cirugia exitoso'], 200);
+        else
+            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DE LA CIRUGIA'], 200);
+            
 
     }
 }

@@ -29,7 +29,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('cirugia/{id}', 'cirugiaController@update');
 
     //Salas
-    Route::get('salas', 'salaController@salas');
+    Route::post('sala', 'salaController@crear');
+    Route::get('salas', 'salaController@getSalas');
+    Route::post('sala/{id}', 'salaController@getSala');
+    Route::put('sala/{id}', 'salaController@update');
 });
 
 //SIN AUTENTIFICACION

@@ -345,6 +345,33 @@ paths:
                 type: "string"
         400:
           description: Page Not Found
+  /api/sala:
+    post:
+      tags:
+      - "Salas"
+      summary: "Crea una sala"
+      description: "Crea una sala"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            descripcion:
+              type: "string"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
   /api/salas:
     get:
       tags:
@@ -362,6 +389,53 @@ paths:
               nombre:
                 type: "string"
               descripcion:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/sala/id:
+    post:
+      tags:
+      - "Salas"
+      summary: "Muestra detalle de sala"
+      description: "Muestra detalle de sala"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "number"
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+        400:
+          description: Page Not Found
+  /(Update)/api/sala/id:
+    put:
+      tags:
+      - "Salas"
+      summary: "Modifica una sala"
+      description: "Modifica una sala"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            descripcion:
+              type: "string"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
                 type: "string"
         400:
           description: Page Not Found

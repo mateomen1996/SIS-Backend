@@ -9,7 +9,7 @@ class personalController extends Controller
     public function crear(Request $request)
     {
 
-        $rules = [
+        $rules = [ 
         ];
         $messages = [
         ];

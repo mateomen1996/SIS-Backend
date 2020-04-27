@@ -12,7 +12,7 @@ class salaController extends Controller
 
         $rules = [
         ];
-        $messages = [
+        $messages = [ 
         ];
         
         $validator = \Validator::make($request->all(),$rules,$messages);

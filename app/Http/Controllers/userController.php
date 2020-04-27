@@ -55,6 +55,6 @@ class userController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        return response()->json(['message' => 'Usuario Actuilizado existosamente!'], 201);
+        return response()->json(['message' => 'Usuario Actuilizado existosamente'], 201);
     }
 }

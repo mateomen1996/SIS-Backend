@@ -12,6 +12,6 @@ class rolController extends Controller
     {
         $roles= new Rol;
         $roles=$roles->getRoles();
-        return response()->json($roles);
+        return response()->json($roles,200);
     }
 }

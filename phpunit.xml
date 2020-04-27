@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+>
     <testsuites>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
-
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -23,9 +18,16 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="DB_CONNECTION" value="sqlite"/>
+        <server name="DB_DATABASE" value=":memory:"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+        <post name="tokenADM" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQ5Njc2ZWI1NWRkMWVmNjUwYTZhZWI2ZWU1OWIxNGVjNmMwZDJjNDI0NGI1MjVkZWViNDExZWYxMTI3MzYxZGUzYjdiODY3NzBhNGJiODhjIn0.eyJhdWQiOiI2IiwianRpIjoiNDk2NzZlYjU1ZGQxZWY2NTBhNmFlYjZlZTU5YjE0ZWM2YzBkMmM0MjQ0YjUyNWRlZWI0MTFlZjExMjczNjFkZTNiN2I4Njc3MGE0YmI4OGMiLCJpYXQiOjE1ODc5NjQ5MzEsIm5iZiI6MTU4Nzk2NDkzMSwiZXhwIjoxNjE5NTAwOTMxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bVwSYfhrsoh0iTCa3u2aqladUlYJVTdsxuf8rQCrONhxj3UW5bytDvOVJMztBd94R9U_EyoZeHE8UCr6c5B3J8KjK5SN_ECs1mfXtBuRMFhsCLX5gQJiJbmsBbF3vbtfaomJ8LqgvJUM9RNLD80Z0pVlsM76ZGqxh3bgXwZvUs7mXdQja6FOVRyMqF5HklVkiHmWmdbL2kuherU2a8UV4FRyxAICNidFTSn-4NbOpU4AQrRyRrgK1_8T6UZ23jjaspQ26DRLCJxdoF6IFZM2g6ac84_osbA-GR_0wuVuJUIVO7lwuWOpR-y3mnFhjEMCuHYPi1PjwJs4pDRrVflKS5Kh4hnzQy5f0TXDOJ-o7jur1ELdipwbF64huhYobMtwd46TfoX8waIO4iopGiBdH6ybPZgLu3iReYu0nl-Nj86QIEYCemlo_iv6WFisl1cOwI1vo7kS60WzUzTDg3GUGZHxn7JFiLjAVaVYl8cyahZzgTpIzZ0_5PXkzZGzKyMV9YbwJAmMrOkulLTodaIGDv7zsg1nY3ZfGtMac5lY3ajeTXaQ1NgE5Zhw2nuUXN0r-VOSuHlotWtXWCsJEUc9gLBgMIi4EWTBkOECRf9Z9O4V4hlCQ26MO-vqLGNjpRUjz-txwErJmnVoqMUEcD7SXmgAZ_HvPDVFcuDDdxWWDtA"/>
+
     </php>
 </phpunit>

@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('personalCirugia/mostrar', 'personalCirugiaController@mostrar');
     Route::post('personalCirugia/detalle/{id}', 'personalCirugiaController@detalle');
     Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
+    //Vistas
+    Route::post('vistas/cirugias', 'vistasController@cirugias');
+
 });
 //SIN AUTENTIFICACION
 //Rol

@@ -30,7 +30,12 @@ class cirugiaController extends Controller
             'fechaIngreso'      => $request->fechaIngreso,
             'fechaSalida'       => $request->fechaSalida,
         ]);
-        
+        if($cirugia->verificarDoctorOtraCirugia($request->fechaIngreso,$request->fechaSalida,$request->user()->id)!=0){
+            return response()->json(['message' => 'Choque de horario entre cirugias'], 200);
+        }
+        if($cirugia->verificarSilaSalaOcupada($request->fechaIngreso,$request->fechaSalida,$request->id_sala)!=0){
+            return response()->json(['message' => 'La sala ya se encuntra ocupada'], 200);
+        }
         $cirugia->save(); 
 
         return response()->json(['message' => 'Registro de cirugia exitoso'], 200);

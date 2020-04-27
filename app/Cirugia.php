@@ -32,5 +32,14 @@ class Cirugia extends Model
 
         return $cirugia->save();
     }
-    
+    public function verificarDoctorOtraCirugia($fechaEnt,$fechaSal,$id_doctor){
+        return Cirugia::where('id_doctor', '=', $id_doctor)
+        ->whereBetween('fechaIngreso', [$fechaEnt, $fechaSal])
+        ->count();  
+    }
+    public function verificarSilaSalaOcupada($fechaEnt,$fechaSal,$id_sala){
+        return Cirugia::where('id_sala', '=', $id_sala)
+        ->whereBetween('fechaIngreso', [$fechaEnt, $fechaSal])
+        ->count();  
+    }
 }

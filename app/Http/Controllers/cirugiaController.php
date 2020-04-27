@@ -31,7 +31,7 @@ class cirugiaController extends Controller
             'fechaSalida'       => $request->fechaSalida,
         ]);
         
-        $cirugia->save();
+        $cirugia->save(); 
 
         return response()->json(['message' => 'Registro de cirugia exitoso'], 200);
 

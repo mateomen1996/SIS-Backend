@@ -13,11 +13,9 @@ class Cirugia extends Model
         'id','id_doctor', 'id_paciente', 'id_sala', 'fechaIngreso', 'fechaSalida'
     ];
 
-    public function getCirugias($id_doctor){
-        
+    public function getCirugias($id_doctor){ 
         return Cirugia::where('id_doctor', '=', $id_doctor)
         ->get();  
-           
     }
     public function getCirugia($id,$id_doctor){
         return Cirugia::where('id', '=', $id)

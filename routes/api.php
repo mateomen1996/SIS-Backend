@@ -10,8 +10,8 @@ Route::group(['prefix' => 'auth'], function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('signup', 'AuthController@signup');
-        Route::get('logout', 'AuthController@logout');
-        Route::get('user', 'AuthController@user');
+        Route::post('logout', 'AuthController@logout');
+        Route::post('user', 'AuthController@user');
     });
 }); 
 
@@ -19,7 +19,7 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'auth:api'], function () {
     //USER
     Route::post('userCreator', 'userController@userCreator');
-    Route::get('user/{id}', 'userController@getUser');
+    Route::post('user/{id}', 'userController@getUser');
     Route::put('user/{id}', 'userController@update');
 
     //Cirugia
@@ -30,11 +30,27 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Salas
     Route::post('sala', 'salaController@crear');
-    Route::get('salas', 'salaController@getSalas');
+    Route::post('salas', 'salaController@getSalas');
     Route::post('sala/{id}', 'salaController@getSala');
     Route::put('sala/{id}', 'salaController@update');
+    //Salas
+    Route::post('sala', 'salaController@crear');
+    Route::post('salas', 'salaController@getSalas');
+    Route::post('sala/{id}', 'salaController@getSala');
+    Route::put('sala/{id}', 'salaController@update');
+    //Rol - Personal
+    Route::post('rolPersonal/mostrar', 'rolPersonalController@mostrar');
+    //Personal
+    Route::post('personal/crear', 'personalController@crear');
+    Route::post('personal/mostrar', 'personalController@mostrar');
+    Route::post('personal/detalle/{id}', 'personalController@detalle');
+    Route::put('personal/actualizar/{id}', 'personalController@actualizar');
+    //PersonalCirugia
+    Route::post('personalCirugia/crear', 'personalCirugiaController@crear');
+    Route::post('personalCirugia/mostrar', 'personalCirugiaController@mostrar');
+    Route::post('personalCirugia/detalle/{id}', 'personalCirugiaController@detalle');
+    Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
 });
-
 //SIN AUTENTIFICACION
 //Rol
 Route::get('rol', 'rolController@rol');

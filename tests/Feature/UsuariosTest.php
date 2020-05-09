@@ -15,14 +15,16 @@ class UsuariosTest extends TestCase
             'Content-Type' => 'application/json',
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/userCreator');
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+        ->assertJson(['status'=>'SUCCESS']);
     }
     public function testMostrarUsuario()
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/user/7');
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+        ->assertJson(['status'=>'SUCCESS']);
     }
    
     public function testActualizarUsuario()
@@ -32,6 +34,7 @@ class UsuariosTest extends TestCase
         ])->json('POST','/api/user/3',[
             "name"=>"Nanita"
         ]);
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+        ->assertJson(['status'=>'SUCCESS']);
     }
 }

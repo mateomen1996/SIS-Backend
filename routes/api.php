@@ -50,6 +50,16 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('personalCirugia/mostrar', 'personalCirugiaController@mostrar');
     Route::post('personalCirugia/detalle/{id}', 'personalCirugiaController@detalle');
     Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
+    //Material
+    Route::post('material/crear', 'materialController@crear');
+    Route::post('material/mostrar', 'materialController@mostrar');
+    Route::post('material/detalle/{id}', 'materialController@detalle');
+    Route::put('material/actualizar/{id}', 'materialController@actualizar');
+    //MaterialCirugia
+    Route::post('materialCirugia/crear', 'materialCirugiaController@crear');
+    Route::post('materialCirugia/mostrar', 'materialCirugiaController@mostrar');
+    Route::post('materialCirugia/detalle/{id}', 'materialCirugiaController@detalle');
+    Route::put('materialCirugia/actualizar/{id}', 'materialCirugiaController@actualizar');
     //Vistas
     Route::post('vistas/cirugias', 'vistasController@cirugias');
 

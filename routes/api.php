@@ -60,6 +60,16 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('materialCirugia/mostrar', 'materialCirugiaController@mostrar');
     Route::post('materialCirugia/detalle/{id}', 'materialCirugiaController@detalle');
     Route::put('materialCirugia/actualizar/{id}', 'materialCirugiaController@actualizar');
+    //Insumos
+    Route::post('insumo/crear', 'insumoController@crear');
+    Route::post('insumo/mostrar', 'insumoController@mostrar');
+    Route::post('insumo/detalle/{id}', 'insumoController@detalle');
+    Route::put('insumo/actualizar/{id}', 'insumoController@actualizar');
+    //InsumosCirugia
+    Route::post('insumoCirugia/crear', 'insumoCirugiaController@crear');
+    Route::post('insumoCirugia/mostrar', 'insumoCirugiaController@mostrar');
+    Route::post('insumoCirugia/detalle/{id}', 'insumoCirugiaController@detalle');
+    Route::put('insumoCirugia/actualizar/{id}', 'insumoCirugiaController@actualizar');
     //Vistas
     Route::post('vistas/cirugias', 'vistasController@cirugias');
 

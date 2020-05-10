@@ -30,32 +30,30 @@ class salaController extends Controller
         
         $sala=$sala->save();
         if($sala)
-            return response()->json(['message' => 'Creacion de Sala exitoso'], 200);
+            return response()->json(['message' => 'Exitoso'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DE LA SALA'], 200);
+            return response()->json(['message' => 'Error'], 200);
             
     }
     public function getSalas()
     {
         $salas= new Salas;
         $salas=$salas->getSalas();
-        return response()->json($salas);
+        return response()->json(['message' => 'Exitoso',$salas], 200);
     }
     public function getSala($id)
     {
         $sala = new Salas;
         $sala = $sala->getSala($id);
-        return response()->json($sala);
+        return response()->json(['message' => 'Exitoso',$sala], 200);
     }
     public function update(Request $request,$id)
     {
         $sala = new Salas;
         $sala = $sala->actualizar($request,$id);
         if($sala)
-            return response()->json(['message' => 'Actualizacion de cirugia exitoso'], 200);
+            return response()->json(['message' => 'Exitoso'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DE LA CIRUGIA'], 200);
-            
-
+            return response()->json(['message' => 'Error'], 200);
     }
 }

@@ -12,16 +12,14 @@ class userController extends Controller
     {
         $user = new User;
         $user = $user->userCreator($request->user()->id);
-        return response()->json($user);
+        return response()->json(['message' => 'Exitoso',$user], 200);
 
     }
     public function getUser(Request $request,$id)
     {
         $user = new User;
         $user = $user->getUser($id,$request->user()->id);
-        return response()->json($user);
-
-
+        return response()->json(['message' => 'Exitoso',$user], 200);
     }
     public function update(Request $request,$id)
     {
@@ -38,9 +36,7 @@ class userController extends Controller
         $validator = \Validator::make($request->all(),$rules,$messages);
  
         if($validator->fails()){
-            return response()-> json([
-                'message' => $validator->errors()->all()
-                ],200);
+            return response()-> json(['message' => $validator->errors()->all()],200);
         }
 
 
@@ -49,12 +45,12 @@ class userController extends Controller
         ->count();
 
         if($pertenencia==0){
-            return response()->json(['message' => 'No cuenta con los permisos suficientes'], 201);
+            return response()->json(['message' => 'No autorizado'], 200);
         }
         $user = User::find($id);
         $user->name = $request->name;
         $user->save();
 
-        return response()->json(['message' => 'Usuario Actuilizado existosamente'], 201);
+        return response()->json(['message' => 'Exitoso'], 200);
     }
 }

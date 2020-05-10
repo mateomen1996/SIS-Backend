@@ -18,21 +18,21 @@ class SalasTest extends TestCase
                 "nombre"=>"Sala 300",
                 "descripcion"=>"Tercer Piso",
         ]);
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
     }
     public function testMostrarSalas()
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/salas');
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
     }
     public function testMostrarSala()
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/sala/3');
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
     }
     public function testActualizarSala()
     {
@@ -42,6 +42,6 @@ class SalasTest extends TestCase
             "nombre"=>"Sala 300",
             "descripcion"=>"Tercer Piso",
         ]);
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
     }
 }

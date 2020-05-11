@@ -13,4 +13,10 @@ class vistasController extends Controller
         $cirugias=$cirugias->cirugias();
         return response()->json($cirugias);
     }
+    public function materiales()
+    {
+        $materiales= new Vistas;
+        $materiales=$materiales->materiales();
+        return response()->json($materiales);
+    }
 }

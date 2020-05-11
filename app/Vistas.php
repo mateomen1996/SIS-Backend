@@ -15,4 +15,13 @@ class Vistas extends Model
 
         return $cirugias;
     }
+    public function materiales(){
+
+        $materiales = DB::table('materiales')
+        ->join('estado', 'estado.id', '=', 'materiales.id_estado')
+        ->select('materiales.*','estado.nombre as estado')
+        ->get();
+
+        return $materiales;
+    }
 }

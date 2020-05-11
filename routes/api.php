@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('insumoCirugia/actualizar/{id}', 'insumoCirugiaController@actualizar');
     //Vistas
     Route::post('vistas/cirugias', 'vistasController@cirugias');
+    Route::post('vistas/materiales', 'vistasController@materiales');
 
 });
 //SIN AUTENTIFICACION

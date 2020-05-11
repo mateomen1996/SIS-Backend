@@ -70,6 +70,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('insumoCirugia/mostrar', 'insumoCirugiaController@mostrar');
     Route::post('insumoCirugia/detalle/{id}', 'insumoCirugiaController@detalle');
     Route::put('insumoCirugia/actualizar/{id}', 'insumoCirugiaController@actualizar');
+    //Estado
+    Route::post('estado/mostrar', 'estadoController@mostrar');
     //Vistas
     Route::post('vistas/cirugias', 'vistasController@cirugias');
     Route::post('vistas/materiales', 'vistasController@materiales');

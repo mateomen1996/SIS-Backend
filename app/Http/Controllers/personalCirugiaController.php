@@ -55,4 +55,10 @@ class personalCirugiaController extends Controller
         else
             return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL CIRUGIAPERSONAL'], 200);
     }
+    public function personalDeUnaCirugia($id_cirugia)
+    {
+        $personalcirugia = new PersonalCirugia;
+        $personalcirugia = $personalcirugia->personalDeUnaCirugia($id_cirugia);
+        return response()->json($personalcirugia);
+    }
 }

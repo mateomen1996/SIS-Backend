@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('personalCirugia/mostrar', 'personalCirugiaController@mostrar');
     Route::post('personalCirugia/detalle/{id}', 'personalCirugiaController@detalle');
     Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
+    Route::post('personalCirugia/personalDeUnaCirugia/{id}', 'personalCirugiaController@personalDeUnaCirugia');
+
     //Material
     Route::post('material/crear', 'materialController@crear');
     Route::post('material/mostrar', 'materialController@mostrar');

@@ -29,4 +29,8 @@ class PersonalCirugia extends Model
         
         return $personalcirugia->save();
     }
+    public function personalDeUnaCirugia($id_cirugia){
+        return PersonalCirugia::where('id_cirugia', '=', $id_cirugia)
+        ->get();  
+    }
 }

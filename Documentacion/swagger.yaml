@@ -3,10 +3,6 @@ info:
   description: "Este es la Documentacion del ApiRest para el Sistema de Control de Cirugias"
   version: "1.0.0"
   title: "Sistema de Control de Cirugias"
-  contact:
-    email: "g3tallerdesistemas@gmail.com"
-# schemes:
-# - "http"
 paths:
   /api/auth/login:
     post:
@@ -178,7 +174,7 @@ paths:
         400:
           description: Page Not Found
   /api/user/id:
-    get:
+    post:
       tags:
       - "Usuarios"
       summary: "Muestra el detalle del usuario"
@@ -373,7 +369,7 @@ paths:
         400:
           description: Page Not Found
   /api/salas:
-    get:
+    post:
       tags:
       - "Salas"
       summary: "Muestra todas las salas"
@@ -439,13 +435,735 @@ paths:
                 type: "string"
         400:
           description: Page Not Found
+  /api/rolPersonal/mostrar:
+    post:
+      tags:
+      - "RolPersonal"
+      summary: "Muestra una RolPersonal"
+      description: "Muestra una RolPersonal"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personal/crear:
+    post:
+      tags:
+      - "Personal"
+      summary: "Crea una Personal"
+      description: "Crea una Personal"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            apellidoP:
+              type: "string"
+            apellidoM:
+              type: "string"
+            direccion:
+              type: "string"
+            telefono:
+              type: "string"
+            id_rol:
+              type: "number"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personal/mostrar:
+    post:
+      tags:
+      - "Personal"
+      summary: "Muestra Personal"
+      description: "Muestra Personal"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              apellidoP:
+                type: "string"
+              apellidoM:
+                type: "string"
+              direccion:
+                type: "string"
+              telefono:
+                type: "string"
+              id_rol:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/personal/detalle/id:
+    post:
+      tags:
+      - "Personal"
+      summary: "Muestra Personal detallado"
+      description: "Muestra Personal detallado"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              apellidoP:
+                type: "string"
+              apellidoM:
+                type: "string"
+              direccion:
+                type: "string"
+              telefono:
+                type: "string"
+              id_rol:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/personal/actualizar/id:
+    put:
+      tags:
+      - "Personal"
+      summary: "actualizar Personal "
+      description: "Crea una Personal"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            apellidoP:
+              type: "string"
+            apellidoM:
+              type: "string"
+            direccion:
+              type: "string"
+            telefono:
+              type: "string"
+            id_rol:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personal/eliminar/id:
+    post:
+      tags:
+      - "Personal"
+      summary: "actualizar Personal "
+      description: "Crea una Personal"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personalCirugia/crear:
+    post:
+      tags:
+      - "PersonalCirugia"
+      summary: "Crea una personalCirugia"
+      description: "Crea una personalCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_personal:
+                type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personalCirugia/mostrar:
+    post:
+      tags:
+      - "PersonalCirugia"
+      summary: "Muestra personalCirugia"
+      description: "Muestra personalCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_personal:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/personalCirugia/detalle/id:
+    post:
+      tags:
+      - "PersonalCirugia"
+      summary: "Muestra personalCirugia detallado"
+      description: "Muestra personalCirugia detallado"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_personal:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/personalCirugia/actualizar/id:
+    put:
+      tags:
+      - "PersonalCirugia"
+      summary: "actualizar personalCirugia "
+      description: "Crea una personalCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_personal:
+                type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/personalCirugia/eliminar/id:
+    post:
+      tags:
+      - "PersonalCirugia"
+      summary: "eliminar Personal "
+      description: "eliminar Personal"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found       
+  /api/personalCirugia/personalDeUnaCirugia/id:
+    post:
+      tags:
+      - "PersonalCirugia"
+      summary: "muestra personalDeUnaCirugia "
+      description: "muestra personalDeUnaCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_personal:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found       
+  /api/material/crear:
+    post:
+      tags:
+      - "Material"
+      summary: "Crea una material"
+      description: "Crea una material"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            descripcion:
+              type: "string"
+            id_estado:
+              type: "integer"
+            cantidad:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/material/mostrar:
+    post:
+      tags:
+      - "Material"
+      summary: "Muestra material"
+      description: "Muestra material"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+              id_estado:
+                type: "integer"
+              cantidad:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/material/detalle/id:
+    post:
+      tags:
+      - "Material"
+      summary: "Muestra material detallado"
+      description: "Muestra material detallado"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+              id_estado:
+                type: "integer"
+              cantidad:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/material/actualizar/id:
+    put:
+      tags:
+      - "Material"
+      summary: "actualizar material "
+      description: "Crea una material"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+              id_estado:
+                type: "integer"
+              cantidad:
+                type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/material /eliminar/id:
+    post:
+      tags:
+      - "Material"
+      summary: "eliminar material "
+      description: "eliminar material"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found       
+  /api/materialCirugia/crear:
+    post:
+      tags:
+      - "MaterialCirugia"
+      summary: "Crea MaterialCirugia"
+      description: "Crea MaterialCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_material:
+              type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/materialCirugia/mostrar:
+    post:
+      tags:
+      - "MaterialCirugia"
+      summary: "Muestra MaterialCirugia"
+      description: "Muestra MaterialCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_material:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/materialCirugia/detalle/id:
+    post:
+      tags:
+      - "MaterialCirugia"
+      summary: "Muestra material MaterialCirugia"
+      description: "Muestra material MaterialCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_material:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/materialCirugia/actualizar/id:
+    put:
+      tags:
+      - "MaterialCirugia"
+      summary: "actualizar MaterialCirugia "
+      description: "Crea una MaterialCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_material:
+              type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/materialCirugia/eliminar/id:
+    post:
+      tags:
+      - "MaterialCirugia"
+      summary: "eliminar MaterialCirugia "
+      description: "eliminar MaterialCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found               
+  /api/insumo/crear:
+    post:
+      tags:
+      - "Insumo"
+      summary: "Crea insumo"
+      description: "Crea insumo"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            descripcion:
+              type: "string"
+            cantidad:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/insumo/mostrar:
+    post:
+      tags:
+      - "Insumo"
+      summary: "Muestra insumo"
+      description: "Muestra insumo"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+              cantidad:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/insumo/detalle/id:
+    post:
+      tags:
+      - "Insumo"
+      summary: "Muestra material insumo"
+      description: "Muestra material insumo"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              nombre:
+                type: "string"
+              descripcion:
+                type: "string"
+              cantidad:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/insumo/actualizar/id:
+    put:
+      tags:
+      - "Insumo"
+      summary: "actualizar insumo "
+      description: "Crea una insumo"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            nombre:
+              type: "string"
+            descripcion:
+              type: "string"
+            cantidad:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/insumo/eliminar/id:
+    post:
+      tags:
+      - "Insumo"
+      summary: "eliminar insumo "
+      description: "eliminar insumo"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found               
+  /api/insumoCirugia/crear:
+    post:
+      tags:
+      - "InsumoCirugia"
+      summary: "Crea insumoCirugia"
+      description: "Crea insumoCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_insumo:
+              type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/insumoCirugia/mostrar:
+    post:
+      tags:
+      - "InsumoCirugia"
+      summary: "Muestra insumoCirugia"
+      description: "Muestra insumoCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_insumo:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/insumoCirugia/detalle/id:
+    post:
+      tags:
+      - "InsumoCirugia"
+      summary: "Muestra material insumoCirugia"
+      description: "Muestra material insumoCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              id_insumo:
+                type: "integer"
+              id_cirugia:
+                type: "integer"
+        400:
+          description: Page Not Found
+  /api/insumoCirugia/actualizar/id:
+    put:
+      tags:
+      - "InsumoCirugia"
+      summary: "actualizar insumoCirugia "
+      description: "Crea una insumoCirugia"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            id_insumo:
+              type: "integer"
+            id_cirugia:
+              type: "integer"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found
+  /api/insumoCirugia/eliminar/id:
+    post:
+      tags:
+      - "InsumoCirugia"
+      summary: "eliminar insumoCirugia "
+      description: "eliminar insumoCirugia"
+      responses:
+        200:
+          description: Succses
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+        400:
+          description: Page Not Found               
   
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 basePath: /mateomen1996/Proyecto/1.0.0
-# schemes:
-#  - http
-# Added by API Auto Mocking Plugin
 schemes:
  - https
- - http

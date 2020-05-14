@@ -11,7 +11,7 @@ class Insumo extends Model
     protected $table="insumos";
     
     protected $fillable = [
-        'id', 'nombre', 'descripcion', 'cantidad'
+        'id', 'nombre', 'descripcion', 'cantidad', 'estado'
     ];
 
     public function mostrar(){
@@ -28,6 +28,13 @@ class Insumo extends Model
         $insumo->descripcion=$request->descripcion;
         $insumo->cantidad=$request->cantidad;
         
+        return $insumo->save();
+    }
+    public function eliminar($request,$id){
+        
+        $insumo = Insumo::find($id);
+        $insumo->estado=1;
+
         return $insumo->save();
     }
 }

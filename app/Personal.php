@@ -11,7 +11,7 @@ class Personal extends Model
     protected $table="personal";
     
     protected $fillable = [
-        'id', 'nombre', 'apellidoP','apellidoM','direccion','telefono','id_rol'
+        'id', 'nombre', 'apellidoP','apellidoM','direccion','telefono','id_rol','estado'
     ];
 
     public function mostrar(){
@@ -30,6 +30,13 @@ class Personal extends Model
         $personal->direccion=$request->direccion;
         $personal->telefono=$request->telefono;
         $personal->id_rol=$request->id_rol;
+
+        return $personal->save();
+    }
+    public function eliminar($request,$id){
+        
+        $personal = Personal::find($id);
+        $personal->estado=1;
 
         return $personal->save();
     }

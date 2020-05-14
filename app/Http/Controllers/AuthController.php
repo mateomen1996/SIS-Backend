@@ -13,7 +13,7 @@ class AuthController extends Controller
         $id_user=0;
         $permiso="";
         if($request->user()->id_rol==1){
-            $permiso="Integer|in:1,2,3";
+            $permiso="Integer|in:1,2,3,4,5";
         }else{
             if($request->user()->id_rol==2){
                 $permiso="Integer|in:4,5";

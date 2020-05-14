@@ -11,7 +11,7 @@ class Material extends Model
     protected $table="materiales";
     
     protected $fillable = [
-        'id', 'nombre', 'descripcion', 'id_estado', 'cantidad'
+        'id', 'nombre', 'descripcion', 'id_estado', 'cantidad', 'estadoe'
     ];
 
     public function mostrar(){
@@ -29,6 +29,12 @@ class Material extends Model
         $material->id_estado=$request->id_estado;
         $material->cantidad=$request->cantidad;
         
+        return $material->save();
+    }
+    public function eliminar($request,$id){
+        
+        $material = Material::find($id);
+        $material->estadoe=1;
         return $material->save();
     }
 }

@@ -57,4 +57,13 @@ class materialController extends Controller
         else
             return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL material'], 200);
     }
+    public function eliminar(Request $request,$id)
+    {
+        $material = new Material;
+        $material = $material->eliminar($request,$id);
+        if($material)
+            return response()->json(['message' => 'Eliminacion de material exitoso'], 200);
+        else
+            return response()->json(['message' => 'ERROR EN LA Eliminacion DEL material'], 200);
+    }
 }

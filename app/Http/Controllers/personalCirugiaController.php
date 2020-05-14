@@ -55,6 +55,15 @@ class personalCirugiaController extends Controller
         else
             return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL CIRUGIAPERSONAL'], 200);
     }
+    public function eliminar(Request $request,$id)
+    {
+        $personalcirugia = new PersonalCirugia;
+        $personalcirugia = $personalcirugia->eliminar($request,$id);
+        if($personalcirugia)
+            return response()->json(['message' => 'eliminacion de cirugiaPersonal exitoso'], 200);
+        else
+            return response()->json(['message' => 'ERROR EN LA eliminacion DEL CIRUGIAPERSONAL'], 200);
+    }
     public function personalDeUnaCirugia($id_cirugia)
     {
         $personalcirugia = new PersonalCirugia;

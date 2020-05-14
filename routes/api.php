@@ -45,11 +45,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('personal/mostrar', 'personalController@mostrar');
     Route::post('personal/detalle/{id}', 'personalController@detalle');
     Route::put('personal/actualizar/{id}', 'personalController@actualizar');
+    Route::post('personal/eliminar/{id}', 'personalController@eliminar');
     //PersonalCirugia
     Route::post('personalCirugia/crear', 'personalCirugiaController@crear');
     Route::post('personalCirugia/mostrar', 'personalCirugiaController@mostrar');
     Route::post('personalCirugia/detalle/{id}', 'personalCirugiaController@detalle');
     Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
+    Route::post('personalCirugia/eliminar/{id}', 'personalCirugiaController@eliminar');
     Route::post('personalCirugia/personalDeUnaCirugia/{id}', 'personalCirugiaController@personalDeUnaCirugia');
 
     //Material
@@ -57,6 +59,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('material/mostrar', 'materialController@mostrar');
     Route::post('material/detalle/{id}', 'materialController@detalle');
     Route::put('material/actualizar/{id}', 'materialController@actualizar');
+    Route::post('material/eliminar/{id}', 'materialController@eliminar');
     //MaterialCirugia
     Route::post('materialCirugia/crear', 'materialCirugiaController@crear');
     Route::post('materialCirugia/mostrar', 'materialCirugiaController@mostrar');
@@ -67,6 +70,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('insumo/mostrar', 'insumoController@mostrar');
     Route::post('insumo/detalle/{id}', 'insumoController@detalle');
     Route::put('insumo/actualizar/{id}', 'insumoController@actualizar');
+    Route::post('insumo/eliminar/{id}', 'insumoController@eliminar');
     //InsumosCirugia
     Route::post('insumoCirugia/crear', 'insumoCirugiaController@crear');
     Route::post('insumoCirugia/mostrar', 'insumoCirugiaController@mostrar');

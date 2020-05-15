@@ -16,7 +16,7 @@ class CirugiasTest extends TestCase
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/cirugia',[
                 "id_paciente"=>7,
-                "id_sala"=>1,
+                "id_sala"=>79,
                 "fechaIngreso"=>"2020-04-19 01:27:47",
                 "fechaSalida"=>"2020-04-19 02:27:47"
         ]);

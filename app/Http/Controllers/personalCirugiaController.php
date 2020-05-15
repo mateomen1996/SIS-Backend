@@ -30,9 +30,9 @@ class personalCirugiaController extends Controller
         
         $personalcirugia=$personalcirugia->save();
         if($personalcirugia)
-            return response()->json(['message' => 'Creacion de cirugiaPersonal exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DEL CIRUGIAPERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function mostrar()
     {
@@ -51,18 +51,18 @@ class personalCirugiaController extends Controller
         $personalcirugia = new PersonalCirugia;
         $personalcirugia = $personalcirugia->actualizar($request,$id);
         if($personalcirugia)
-            return response()->json(['message' => 'Actualizacion de cirugiaPersonal exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL CIRUGIAPERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function eliminar(Request $request,$id)
     {
         $personalcirugia = new PersonalCirugia;
         $personalcirugia = $personalcirugia->eliminar($request,$id);
         if($personalcirugia)
-            return response()->json(['message' => 'eliminacion de cirugiaPersonal exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA eliminacion DEL CIRUGIAPERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function personalDeUnaCirugia($id_cirugia)
     {

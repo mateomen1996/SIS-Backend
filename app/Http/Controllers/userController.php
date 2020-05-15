@@ -12,14 +12,14 @@ class userController extends Controller
     {
         $user = new User;
         $user = $user->userCreator($request->user()->id);
-        return response()->json(['message' => 'Exitoso',$user], 200);
+        return response()->json(['message' => 'Exito',$user], 200);
 
     }
     public function getUser(Request $request,$id)
     {
         $user = new User;
         $user = $user->getUser($id,$request->user()->id);
-        return response()->json(['message' => 'Exitoso',$user], 200);
+        return response()->json(['message' => 'Exito',$user], 200);
     }
     public function update(Request $request,$id)
     {
@@ -51,6 +51,6 @@ class userController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        return response()->json(['message' => 'Exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
     }
 }

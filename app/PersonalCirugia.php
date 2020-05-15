@@ -30,7 +30,6 @@ class PersonalCirugia extends Model
         return $personalcirugia->save();
     }
     public function eliminar($request,$id){
-        
         $personalcirugia = PersonalCirugia::find($id);
         return $personalcirugia->delete();
     }

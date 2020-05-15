@@ -27,8 +27,7 @@ class Material extends Model
         $material->nombre=$request->nombre;
         $material->descripcion=$request->descripcion;
         $material->id_estado=$request->id_estado;
-        $material->cantidad=$request->cantidad;
-        
+        $material->estadoe=$request->estadoe;        
         return $material->save();
     }
     public function eliminar($request,$id){

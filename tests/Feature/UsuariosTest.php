@@ -15,14 +15,14 @@ class UsuariosTest extends TestCase
             'Content-Type' => 'application/json',
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/userCreator');
-        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
+        $response->assertStatus(200)->assertJson(["message"=>"Exito"]);
     }
     public function testMostrarUsuario()
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/user/7');
-        $response->assertStatus(200)->assertJson(["message"=>"Exitoso"]);
+        $response->assertStatus(200)->assertJson(["message"=>"Exito"]);
     }
    
     public function testActualizarUsuario()
@@ -33,7 +33,7 @@ class UsuariosTest extends TestCase
             "name"=>"Nanita"
         ]);
         $response->assertStatus(200);
-        $response->assertJson(["message"=>"Exitoso"]);
+        $response->assertJson(["message"=>"Exito"]);
     }
     public function testActualizarUsuarioNoPropio()
     {

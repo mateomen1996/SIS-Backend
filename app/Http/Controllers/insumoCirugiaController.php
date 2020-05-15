@@ -30,9 +30,9 @@ class insumoCirugiaController extends Controller
         
         $insumoCirugia=$insumoCirugia->save();
         if($insumoCirugia)
-            return response()->json(['message' => 'Creacion de insumoCirugia exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DEL insumoCirugia'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function mostrar()
     {
@@ -51,8 +51,8 @@ class insumoCirugiaController extends Controller
         $insumoCirugia = new InsumoCirugia;
         $insumoCirugia = $insumoCirugia->actualizar($request,$id);
         if($insumoCirugia)
-            return response()->json(['message' => 'Actualizacion de insumoCirugia exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL insumoCirugia'], 200);
+            return response()->json(['message' => 'Exito'], 200);
     }
 }

@@ -58,9 +58,9 @@ class cirugiaController extends Controller
         $cirugia = new Cirugia;
         $cirugia = $cirugia->actualizar($request,$id);
         if($cirugia)
-            return response()->json(['message' => 'Actualizacion de cirugia exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DE LA CIRUGIA'], 200);
+            return response()->json(['message' => 'Error'], 200);
             
 
     }

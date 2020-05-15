@@ -15,8 +15,8 @@ class PersonalCirugia extends TestCase
             'Content-Type' => 'application/json',
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/personalCirugia/crear',[
-            "id_cirugia"=>14,
-            "id_personal"=>1,
+            "id_cirugia"=>59,
+            "id_personal"=>10,
         ]);
         $response->assertStatus(200);
     }
@@ -39,8 +39,8 @@ class PersonalCirugia extends TestCase
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('PUT','/api/personalCirugia/actualizar/1',[
-            "id_personal"=>1,
-            "id_cirugia"=>14
+            "id_personal"=>10,
+            "id_cirugia"=>59
         ]);
         $response->assertStatus(200);
     }

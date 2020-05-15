@@ -52,17 +52,17 @@ class insumoController extends Controller
         $insumo = new Insumo;
         $insumo = $insumo->actualizar($request,$id);
         if($insumo)
-            return response()->json(['message' => 'Actualizacion de insumo exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZACION DEL insumo'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function eliminar(Request $request,$id)
     {
         $insumo = new Insumo;
         $insumo = $insumo->eliminar($request,$id);
         if($insumo)
-            return response()->json(['message' => 'Eliminacion de insumo exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA Eliminacion DEL insumo'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
 }

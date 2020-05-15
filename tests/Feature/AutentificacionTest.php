@@ -16,10 +16,10 @@ class AutentificacionTest extends TestCase
             'X-Requested-With' => 'XMLHttpRequest',
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
         ])->json('POST','/api/auth/signup',[
-            "name"=>"asdasd",
-            "email"=>"asdasfd@gmail.com",
-            "password"=>"asdasd",
-            "password_confirmation"=>"asdasd",
+            "name"=>"asdasasdd",
+            "email"=>"asdasfasdssd@gmail.com",
+            "password"=>"asdasds",
+            "password_confirmation"=>"asdasds",
             "id_rol"=>4
         ]);
         $response->assertStatus(200);

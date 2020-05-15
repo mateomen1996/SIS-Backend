@@ -32,9 +32,9 @@ class materialController extends Controller
         
         $material=$material->save();
         if($material)
-            return response()->json(['message' => 'Creacion de material exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DEL material'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function mostrar()
     {
@@ -53,17 +53,17 @@ class materialController extends Controller
         $material = new Material;
         $material = $material->actualizar($request,$id);
         if($material)
-            return response()->json(['message' => 'Actualizacion de material exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL material'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function eliminar(Request $request,$id)
     {
         $material = new Material;
         $material = $material->eliminar($request,$id);
         if($material)
-            return response()->json(['message' => 'Eliminacion de material exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA Eliminacion DEL material'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
 }

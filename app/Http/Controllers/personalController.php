@@ -33,9 +33,9 @@ class personalController extends Controller
         
         $personal=$personal->save();
         if($personal)
-            return response()->json(['message' => 'Creacion de personal exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DEL PERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function mostrar()
     {
@@ -54,17 +54,17 @@ class personalController extends Controller
         $personal = new Personal;
         $personal = $personal->actualizar($request,$id);
         if($personal)
-            return response()->json(['message' => 'Actualizacion de personal exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL PERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function eliminar(Request $request,$id)
     {
         $personal = new Personal;
         $personal = $personal->eliminar($request,$id);
         if($personal)
-            return response()->json(['message' => 'Eliminacion de personal exitoso'], 200);
+        return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA eliminacion DEL PERSONAL'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
 }

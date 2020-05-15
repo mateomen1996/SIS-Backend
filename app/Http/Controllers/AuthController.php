@@ -60,7 +60,7 @@ class AuthController extends Controller
         $user->save();
         $user->notify(new SignupActivate($user));
         
-        return response()->json(['message' => 'Usuario creado existosamente!'], 200);
+        return response()->json(['message' => 'Exito'], 200);
     }
     public function login(Request $request)
     {
@@ -101,13 +101,13 @@ class AuthController extends Controller
             'access_token' => $tokenResult->accessToken,
             'token_type'   => 'Bearer',
             'expires_at'   => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
-            'message' => 'Inicio de sesion exitoso'
+            'message' => 'Exito'
         ],200);
     }
     public function logout(Request $request)
     {
         echo $request->user()->token()->revoke();
-        return response()->json(['message' => 'Cierre de sesion exitoso'],200);
+        return response()->json(['message' => 'Exito'],200);
     }
 
     public function user(Request $request)
@@ -118,7 +118,7 @@ class AuthController extends Controller
     {
         $user = User::where('activation_token', $token)->first();
         if (!$user) {
-            return response()->json(['message' => 'El token de activación es inválido'], 200);
+            return response()->json(['message' => 'Invalido Token'], 200);
         }
         $user->active = true;
         $user->activation_token = '';

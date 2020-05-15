@@ -30,9 +30,9 @@ class materialCirugiaController extends Controller
         
         $materialCirugia=$materialCirugia->save();
         if($materialCirugia)
-            return response()->json(['message' => 'Creacion de materialCirugia exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA CREACION DEL materialCirugia'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
     public function mostrar()
     {
@@ -51,8 +51,8 @@ class materialCirugiaController extends Controller
         $materialCirugia = new MaterialCirugia;
         $materialCirugia = $materialCirugia->actualizar($request,$id);
         if($materialCirugia)
-            return response()->json(['message' => 'Actualizacion de materialCirugia exitoso'], 200);
+            return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'ERROR EN LA ACTUALIZAVION DEL materialCirugia'], 200);
+            return response()->json(['message' => 'Error'], 200);
     }
 }

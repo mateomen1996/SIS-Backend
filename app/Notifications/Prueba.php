@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SignupActivate extends Notification
+class Prueba extends Notification
 {
     use Queueable;
 
@@ -41,11 +41,10 @@ class SignupActivate extends Notification
     public function toMail($notifiable)
     {
         //$url = url('/api/auth/signup/activate/'.$notifiable->activation_token);
-        $url = 'http://177.222.52.26:8000/api/auth/signup/activate/'.$notifiable->activation_token;
         return (new MailMessage)
-            ->subject('Confirma tu cuenta')
-            ->line('Gracias por Registrarte! Antes de continuar, debes configurar tu cuenta.')
-            ->action('Confirmar tu cuenta', url($url))
+            ->greeting('Cirugia Programada')
+            ->subject('Programacion de Cirugia')
+            ->line('Su cirgia es fue programada para el '.$notifiable["fechaIngreso"])
             ->line('Muchas gracias por utilizar nuestra plataforma GRUPO 3 TAllER DE SISTEMAS');
     }
 

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Cirugia;
+use App\Email;
+use App\User;
 use Illuminate\Http\Request;
+use App\Notifications\Prueba;
 
 class cirugiaController extends Controller
 {
@@ -36,9 +39,22 @@ class cirugiaController extends Controller
         if($cirugia->verificarSilaSalaOcupada($request->fechaIngreso,$request->fechaSalida,$request->id_sala)!=0){
             return response()->json(['message' => 'La sala ya se encuntra ocupada'], 200);
         }
+        
         $cirugia->save(); 
+        return response()->json(['message' => 'Registro exitoso cirugias'], 200);
 
-        return response()->json(['message' => 'Registro de cirugia exitoso'], 200);
+
+        $user=new User;
+        $email=$user->detalle($request->id_paciente)[0]['email'];
+
+
+        $email = new Email([
+            'email'             => $email,
+            'fechaIngreso'      => $request->fechaIngreso,
+            'fechaSalida'       => $request->fechaSalida,
+        ]);
+        $email->notify(new Prueba($email));
+
 
     }
     public function getCirugias(Request $request)

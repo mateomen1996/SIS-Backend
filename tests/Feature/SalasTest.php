@@ -42,6 +42,6 @@ class SalasTest extends TestCase
             "nombre"=>"Sala 300",
             "descripcion"=>"Tercer Piso",
         ]);
-        $response->assertStatus(200)->assertJson(["message"=>"Exito"]);
+        $response->assertStatus(200)->assertJson(["message"=>"Exitos"]);
     }
 }

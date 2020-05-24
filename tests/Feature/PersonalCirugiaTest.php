@@ -31,14 +31,14 @@ class PersonalCirugia extends TestCase
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
-        ])->json('POST','/api/personalCirugia/detalle/3');
+        ])->json('POST','/api/personalCirugia/detalle/71');
         $response->assertStatus(200);
     }
     public function testActualizarPersonalCirugia()
     {
         $response = $this->withHeaders([
             'Authorization'=>"Bearer ".$_POST['tokenADM'],
-        ])->json('PUT','/api/personalCirugia/actualizar/1',[
+        ])->json('PUT','/api/personalCirugia/actualizar/71',[
             "id_personal"=>10,
             "id_cirugia"=>59
         ]);

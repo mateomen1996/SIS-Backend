@@ -2,9 +2,12 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Cirugia extends Model
 {
+    use  Notifiable;
+
     public $timestamps = FALSE;
 
     protected $table="cirugias";

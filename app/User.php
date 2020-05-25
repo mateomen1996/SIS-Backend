@@ -43,6 +43,10 @@ class User extends Authenticatable
         ->where('id_user', '=', $id_user)
         ->get();  
     }
+    public function getUsers()
+    {
+        return User::all();
+    }
     public function detalle($id)
     {
         return User::where('id', '=', $id)

@@ -11,8 +11,14 @@ class userController extends Controller
     public function userCreator(Request $request)
     {
         $user = new User;
-        $user = $user->userCreator($request->user()->id);
-        return response()->json(['message' => 'Exito',$user], 200);
+        if($request->user()->id_rol==1){
+            $user = $user->getUsers();
+            return response()->json(['message' => 'Exito',$user], 200);
+        }else{
+            $user = $user->userCreator($request->user()->id);
+            return response()->json(['message' => 'Exito',$user], 200);
+        }
+        
 
     }
     public function getUser(Request $request,$id)

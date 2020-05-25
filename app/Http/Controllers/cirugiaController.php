@@ -41,7 +41,6 @@ class cirugiaController extends Controller
         }
         
         $cirugia->save(); 
-        return response()->json(['message' => 'Registro exitoso cirugias'], 200);
 
 
         $user=new User;
@@ -55,6 +54,9 @@ class cirugiaController extends Controller
         ]);
         $email->notify(new Prueba($email));
 
+        
+
+        return response()->json(['message' => 'Registro exitoso cirugias'], 200);
 
     }
     public function getCirugias(Request $request)

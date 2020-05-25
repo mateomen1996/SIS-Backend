@@ -45,7 +45,7 @@ class Prueba extends Notification
             ->greeting('Cirugia Programada')
             ->subject('Programacion de Cirugia')
             ->line('Su cirgia es fue programada para el '.$notifiable["fechaIngreso"])
-            ->line('Muchas gracias por utilizar nuestra plataforma GRUPO 3 TAllER DE SISTEMAS');
+            ->line('Muchas gracias por utilizar nuestra plataforma GRUPO 3 TALLER DE SISTEMAS');
     }
 
     /**

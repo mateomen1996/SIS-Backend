@@ -82,6 +82,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('vistas/cirugias', 'vistasController@cirugias');
     Route::post('vistas/materiales', 'vistasController@materiales');
 
+
+
+    //Proceso
+    Route::post('proceso/crear', 'procesoController@crear');
+    Route::post('proceso/mostrar', 'procesoController@mostrar');
+    Route::post('proceso/detalle/{id}', 'procesoController@detalle');
+    Route::put('proceso/actualizar/{id}', 'procesoController@actualizar');
+
 });
 //SIN AUTENTIFICACION
 //Rol

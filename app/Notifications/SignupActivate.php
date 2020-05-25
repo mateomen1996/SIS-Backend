@@ -46,7 +46,7 @@ class SignupActivate extends Notification
             ->subject('Confirma tu cuenta')
             ->line('Gracias por Registrarte! Antes de continuar, debes configurar tu cuenta.')
             ->action('Confirmar tu cuenta', url($url))
-            ->line('Muchas gracias por utilizar nuestra plataforma GRUPO 3 TAllER DE SISTEMAS');
+            ->line('Muchas gracias por utilizar nuestra plataforma GRUPO 3 TALLER DE SISTEMAS');
     }
 
     /**

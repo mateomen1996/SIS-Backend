@@ -17,7 +17,14 @@ Route::group(['prefix' => 'auth'], function () {
 
 //CON AUTENTIFICACION
 Route::group(['middleware' => 'auth:api'], function () {
+
+    //ROL
+    Route::post('rol/mostrar', 'rolController@mostrar');
+
     //USER
+    Route::post('user/encargado', 'userController@encargado');
+    Route::post('user/paciente', 'userController@paciente');
+    Route::post('user/doctor', 'userController@doctor');
     Route::post('userCreator', 'userController@userCreator');
     Route::post('user/{id}', 'userController@getUser');
     Route::put('user/{id}', 'userController@update');

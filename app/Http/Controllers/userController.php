@@ -27,6 +27,29 @@ class userController extends Controller
         $user = $user->getUser($id,$request->user()->id);
         return response()->json(['message' => 'Exito',$user], 200);
     }
+    public function doctor()
+    {
+        $user = new User;
+        $user = $user->getUserDoctor();
+        return response()->json(['message' => 'Exito',$user], 200);
+    }
+    public function encargado()
+    {
+        $user = new User;
+        $user = $user->getUserEncargado();
+        return response()->json(['message' => 'Exito',$user], 200);
+    }
+    public function paciente(Request $request)
+    {
+        $user = new User;
+        if($request->user()->id_rol==1){
+            $user = $user->getUserPaciente();
+            return response()->json(['message' => 'Exito',$user], 200);
+        }else{
+            $user = $user->userCreator($request->user()->id);
+            return response()->json(['message' => 'Exito',$user], 200);
+        }
+    }
     public function update(Request $request,$id)
     {
 

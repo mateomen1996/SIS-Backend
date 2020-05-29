@@ -30,6 +30,7 @@ class Cirugia extends Model
 
         $cirugia->id_paciente=$request->id_paciente;
         $cirugia->id_sala=$request->id_sala;
+        $cirugia->id_proceso=$request->id_proceso;
         $cirugia->fechaIngreso=$request->fechaIngreso;
         $cirugia->fechaSalida=$request->fechaSalida;
 

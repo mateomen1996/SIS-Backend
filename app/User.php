@@ -43,6 +43,21 @@ class User extends Authenticatable
         ->where('id_user', '=', $id_user)
         ->get();  
     }
+    public function getUserDoctor()
+    {
+        return User::where('id_rol', '=', 2)
+        ->get();  
+    }
+    public function getUserEncargado()
+    {
+        return User::where('id_rol', '=', 3)
+        ->get();  
+    }
+    public function getUserPaciente()
+    {
+        return User::where('id_rol', '=', 4)
+        ->get();  
+    }
     public function getUsers()
     {
         return User::all();

@@ -8,7 +8,7 @@ use App\Rol;
 class rolController extends Controller
 {
     //
-    public function rol()
+    public function mostrar()
     {
         $roles= new Rol;
         $roles=$roles->getRoles();

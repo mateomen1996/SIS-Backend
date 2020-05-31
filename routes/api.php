@@ -28,12 +28,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('userCreator', 'userController@userCreator');
     Route::post('user/{id}', 'userController@getUser');
     Route::put('user/{id}', 'userController@update');
+    Route::put('user/resetpass/{id}', 'userController@resetpass');
 
     //Cirugia
     Route::post('cirugia', 'cirugiaController@crear');
     Route::post('cirugia/getCirugias', 'cirugiaController@getCirugias');
     Route::post('cirugia/{id}', 'cirugiaController@getCirugia');
     Route::put('cirugia/{id}', 'cirugiaController@update');
+    Route::put('cirugia/encargado', 'cirugiaController@encargado');
+    Route::put('cirugia/cambiarProceso/{id}', 'cirugiaController@cambiarProceso');
 
     //Salas
     Route::post('sala', 'salaController@crear');
@@ -60,7 +63,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('personalCirugia/actualizar/{id}', 'personalCirugiaController@actualizar');
     Route::post('personalCirugia/eliminar/{id}', 'personalCirugiaController@eliminar');
     Route::post('personalCirugia/personalDeUnaCirugia/{id}', 'personalCirugiaController@personalDeUnaCirugia');
-
+    
     //Material
     Route::post('material/crear', 'materialController@crear');
     Route::post('material/mostrar', 'materialController@mostrar');
@@ -72,23 +75,31 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('materialCirugia/mostrar', 'materialCirugiaController@mostrar');
     Route::post('materialCirugia/detalle/{id}', 'materialCirugiaController@detalle');
     Route::put('materialCirugia/actualizar/{id}', 'materialCirugiaController@actualizar');
+    Route::post('materialCirugia/materialEnCirugia/{id}', 'materialCirugiaController@materialEnCirugia');
+    Route::post('materialCirugia/eliminar/{id}', 'materialCirugiaController@eliminar');
+
     //Insumos
     Route::post('insumo/crear', 'insumoController@crear');
     Route::post('insumo/mostrar', 'insumoController@mostrar');
     Route::post('insumo/detalle/{id}', 'insumoController@detalle');
     Route::put('insumo/actualizar/{id}', 'insumoController@actualizar');
     Route::post('insumo/eliminar/{id}', 'insumoController@eliminar');
+    
     //InsumosCirugia
     Route::post('insumoCirugia/crear', 'insumoCirugiaController@crear');
     Route::post('insumoCirugia/mostrar', 'insumoCirugiaController@mostrar');
     Route::post('insumoCirugia/detalle/{id}', 'insumoCirugiaController@detalle');
     Route::put('insumoCirugia/actualizar/{id}', 'insumoCirugiaController@actualizar');
+    Route::post('insumoCirugia/insumoEnCirugia/{id}', 'insumoCirugiaController@insumoEnCirugia');
+    Route::post('insumoCirugia/eliminar/{id}', 'insumoCirugiaController@eliminar');
     //Estado
     Route::post('estado/mostrar', 'estadoController@mostrar');
     //Vistas
     Route::post('vistas/cirugias', 'vistasController@cirugias');
     Route::post('vistas/materiales', 'vistasController@materiales');
-
+    Route::post('vistas/cirugias', 'vistasController@encargado');
+    Route::post('vistas/cirugiasEspera', 'vistasController@cirugiasEspera');
+    Route::post('vistas/personal', 'vistasController@personal');
 
 
     //Proceso

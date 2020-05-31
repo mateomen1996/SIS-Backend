@@ -19,7 +19,8 @@ class salaController extends Controller
  
         if($validator->fails()){
             return response()-> json([
-                'message' => $validator->errors()->all()
+                'message' => "fallo",
+                'errores'=>$validator->errors()->all()
                 ],200);
         }
 

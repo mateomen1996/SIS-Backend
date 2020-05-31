@@ -20,9 +20,10 @@ class Cirugia extends Model
         return Cirugia::where('id_doctor', '=', $id_doctor)
         ->get();  
     }
+    
     public function getCirugia($id,$id_doctor){
         return Cirugia::where('id', '=', $id)
-        ->where('id_doctor', '=', $id_doctor)
+        //->where('id_doctor', '=', $id_doctor)
         ->get();  
     }
     public function actualizar($request,$id){
@@ -45,5 +46,10 @@ class Cirugia extends Model
         return Cirugia::where('id_sala', '=', $id_sala)
         ->whereBetween('fechaIngreso', [$fechaEnt, $fechaSal])
         ->count();  
+    }
+    public function cambiarProceso($request,$id){
+        $cirugia = Cirugia::find($id);
+        $cirugia->id_proceso=$request->id_proceso;
+        return $cirugia->save();
     }
 }

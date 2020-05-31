@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'id_rol', 'id_user', 'active', 'activation_token',
+        'name', 'email', 'password', 'id_rol', 'id_user', 'active', 'activation_token', 'apaterno', 'amaterno', 'carnet', 'celular', 'telefono', 'fecha_nac', 'emergencia', 'tel_emergencia', 'direccion',
     ];
 
     /**
@@ -40,7 +40,6 @@ class User extends Authenticatable
     public function getUser($id,$id_user)
     {
         return User::where('id', '=', $id)
-        ->where('id_user', '=', $id_user)
         ->get();  
     }
     public function getUserDoctor()

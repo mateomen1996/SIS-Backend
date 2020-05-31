@@ -22,7 +22,7 @@ class Email extends Authenticatable
     protected $table="email";
 
     protected $fillable = [
-        'email', 'fechaIngreso', 'fecha Salida',
+        'email', 'fechaIngreso', 'fechaSalida', 'dato',
     ];
 
 }

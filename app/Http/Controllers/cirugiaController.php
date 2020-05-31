@@ -22,7 +22,8 @@ class cirugiaController extends Controller
  
         if($validator->fails()){
             return response()-> json([
-                'message' => $validator->errors()->all()
+                'message' => "fallo",
+                'errores'=>$validator->errors()->all()
                 ],200);
         }
 
@@ -75,6 +76,23 @@ class cirugiaController extends Controller
     {
         $cirugia = new Cirugia;
         $cirugia = $cirugia->actualizar($request,$id);
+        if($cirugia)
+            return response()->json(['message' => 'Exito'], 200);
+        else
+            return response()->json(['message' => 'Error'], 200);
+            
+
+    }
+    public function encargado(Request $request)
+    {
+        $cirugia = new Cirugia;
+        $cirugia = $cirugia->getCirugias();
+        return $cirugia;
+    }
+    public function cambiarProceso(Request $request,$id)
+    {
+        $cirugia = new Cirugia;
+        $cirugia = $cirugia->cambiarProceso($request,$id);
         if($cirugia)
             return response()->json(['message' => 'Exito'], 200);
         else

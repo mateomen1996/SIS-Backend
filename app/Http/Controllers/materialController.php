@@ -19,7 +19,8 @@ class materialController extends Controller
  
         if($validator->fails()){
             return response()-> json([
-                'message' => $validator->errors()->all()
+                'message' => "fallo",
+                'errores'=>$validator->errors()->all()
                 ],200);
         }
 
@@ -34,7 +35,7 @@ class materialController extends Controller
         if($material)
             return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'Error'], 200);
+            return response()->json(['message' => 'fallo'], 200);
     }
     public function mostrar()
     {
@@ -55,7 +56,7 @@ class materialController extends Controller
         if($material)
             return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'Error'], 200);
+            return response()->json(['message' => 'fallo'], 200);
     }
     public function eliminar(Request $request,$id)
     {
@@ -64,6 +65,6 @@ class materialController extends Controller
         if($material)
             return response()->json(['message' => 'Exito'], 200);
         else
-            return response()->json(['message' => 'Error'], 200);
+            return response()->json(['message' => 'fallo'], 200);
     }
 }

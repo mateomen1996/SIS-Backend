@@ -15,7 +15,8 @@ class Personal extends Model
     ];
 
     public function mostrar(){
-        return Personal::all();
+        return Personal::where('estado', '=', "0")
+        ->get();  
     }
     public function detalle($id){
         return Personal::where('id', '=', $id)

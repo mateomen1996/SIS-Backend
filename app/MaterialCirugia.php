@@ -11,7 +11,7 @@ class MaterialCirugia extends Model
     protected $table="materiales_cirugia";
     
     protected $fillable = [
-        'id', 'id_material', 'id_cirugia'
+        'id', 'id_material', 'id_cirugia', 'cantidad'
     ];
 
     public function mostrar(){
@@ -26,6 +26,16 @@ class MaterialCirugia extends Model
         $materialCirugia = MaterialCirugia::find($id);
         $materialCirugia->id_material=$request->id_material;
         $materialCirugia->id_cirugia=$request->id_cirugia;       
+        $materialCirugia->cantidad=$request->cantidad;       
         return $materialCirugia->save();
+    }
+    public function materialEnCirugia($id){
+        return MaterialCirugia::where('id_cirugia', '=', $id)
+        ->get();  
+    }
+    public function eliminar($request,$id){
+        
+        $materialCirugia = MaterialCirugia::find($id);
+        return $materialCirugia->delete();
     }
 }

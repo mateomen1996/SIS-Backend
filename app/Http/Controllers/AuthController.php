@@ -13,7 +13,7 @@ class AuthController extends Controller
         $id_user=0;
         $permiso="";
         if($request->user()->id_rol==1){
-            $permiso="Integer|in:1,2,3,4,5";
+            $permiso="Integer|in:1,2,3,4,5,6";
         }else{
             if($request->user()->id_rol==2){
                 $permiso="Integer|in:4,5";
@@ -26,7 +26,6 @@ class AuthController extends Controller
         $rules = [
             'name'      => 'required|string',
             'email'     => 'required|string|email|unique:users',
-            'password'  => 'required|string|confirmed',
             'id_rol'    => $permiso,
         ];
         $messages = [
@@ -36,30 +35,39 @@ class AuthController extends Controller
             'email.email' =>'Debe ingresar un correo electronico.',
             'email.string' => 'Correo invalido.',
             'email.unique' => 'Ya se encuentra registrado este correo',
-            'password.required' => 'Contraseña requerida.',
-            'password.string' => 'Contraseña invalida.',
-            'password.confirmed' => 'Las contraseñas no son iguales',
             'id_rol.in' => 'No cuenta con los permisos para crear este tipo de cuenta',
         ];
         $validator = \Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
             return response()-> json([
-                'message' => $validator->errors()->all()
+                'message' => "fallo",
+                'errores'=>$validator->errors()->all()
                 ],200);
         }
-        
+        $pass=str_random(8);
         $user = new User([
             'name'              => $request->name,
             'email'             => $request->email,
-            'password'          => bcrypt($request->password),
+            'password'          => bcrypt($pass),
             'activation_token'  => str_random(60),
             'id_rol'  => $request->id_rol,
             'id_user'  => $request->user()->id,
+
+            "apaterno" => $request->apaterno,
+            "amaterno" => $request->amaterno,
+            "carnet" => $request->carnet,
+            "celular" => $request->celular,
+            "telefono" => $request->telefono,
+            "direccion" => $request->direccion,
+            "fecha_nac" => $request->fecha_nac,
+            "emergencia" => $request->emergencia,
+            "tel_emergencia" => $request->tel_emergencia
         ]);
         
         $user->save();
+        $user['password']=$pass;
         $user->notify(new SignupActivate($user));
-        
+
         return response()->json(['message' => 'Exito'], 200);
     }
     public function login(Request $request)
@@ -79,8 +87,10 @@ class AuthController extends Controller
  
         if($validator->fails()){
             return response()-> json([
-                'message' => $validator->errors()->all()
+                'message' => "fallo",
+                'errores'=>$validator->errors()->all()
                 ],200);
+                
         }
         
         $credentials = request(['email', 'password']);

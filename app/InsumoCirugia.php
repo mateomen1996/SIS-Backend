@@ -11,7 +11,7 @@ class InsumoCirugia extends Model
     protected $table="insumos_cirugia";
     
     protected $fillable = [
-        'id', 'id_insumo', 'id_cirugia'
+        'id', 'id_insumo', 'id_cirugia', 'cantidad'
     ];
 
     public function mostrar(){
@@ -26,6 +26,16 @@ class InsumoCirugia extends Model
         $insumoCirugia = InsumoCirugia::find($id);
         $insumoCirugia->id_insumo=$request->id_insumo;
         $insumoCirugia->id_cirugia=$request->id_cirugia;       
+        $insumoCirugia->cantidad=$request->cantidad;       
         return $insumoCirugia->save();
+    }
+    public function insumoEnCirugia($id){
+        return InsumoCirugia::where('id_cirugia', '=', $id)
+        ->get();  
+    }
+    public function eliminar($request,$id){
+        
+        $insumoCirugia = InsumoCirugia::find($id);
+        return $insumoCirugia->delete();
     }
 }

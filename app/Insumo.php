@@ -11,12 +11,12 @@ class Insumo extends Model
     protected $table="insumos";
     
     protected $fillable = [
-        'id', 'nombre', 'descripcion', 'cantidad', 'estado'
+        'id', 'nombre', 'descripcion', 'cantidad', 'estadoe'
     ];
 
     public function mostrar(){
-        return Insumo::all();
-    }
+        return Insumo::where('estadoe', '=', "0")
+        ->get();     }
     public function detalle($id){
         return Insumo::where('id', '=', $id)
         ->get();  
